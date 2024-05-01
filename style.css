@@ -13,7 +13,6 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-
 body {
     margin: 0;
     padding: 0;
@@ -128,16 +127,27 @@ iframe {
   color: #da9100;
 }
 .skills .code {
-  border: 1.5px solid var(--dark-color);
-  color: var(--dark-color);
-  background-color: var(--light-color);
+  border: 1.5px solid white;
+  color: white;
+  background-color: var(--dark-color);
   opacity: 1;
+  height: 27px;
+  display: flex;
+  align-items: center;
+}
+.skills .code a {
+  text-decoration: none;
+  color: var(--light-color);
 }
 .skills .code:hover {
-  border: 1.5px solid var(--light-color);
-  color: var(--light-color);
-  background-color: var(--dark-color75);
+  border: 1.5px solid var(--dark-color);
+  color: var(--dark-color);
+  background-color: white;
   opacity: 1;
+}
+
+.skills .code:hover > a {
+  color: var(--dark-color);
 }
 
 .project2 .iframe-container {
