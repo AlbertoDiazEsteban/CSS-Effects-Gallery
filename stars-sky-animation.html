@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    
+    <!-- Style for the stars -->
+    <style>
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      }
+      body {
+      width: 100%;
+      background-color: #050509;    
+      overflow: hidden;
+      }
+      section i {
+      width: 100vh;
+      height: 100vh;
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff, 0 0 90px #fff;
+      animation: animate 5s linear infinite;
+      }
+      @keyframes animate {
+      5% { opacity: 0.05; }
+      50% { opacity: 0.50; }
+      75% { opacity: 0.65; }
+      100% { opacity: 1; }
+      }
+  </style>
+</head>
+<body>
+  
+  <section></section>
+
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.383/build/spline-viewer.js"></script>
+  <spline-viewer url="undefined"></spline-viewer>
+  
+  <script>
+    stars = () => {
+        const count = 400;
+        const section = document.querySelector('section');
+        let i = 0;
+
+        while (i < count) {
+            const star = document.createElement('i');
+            const x = Math.floor(Math.random() * window.innerWidth)
+            const y = Math.floor(Math.random() * window.innerHeight)
+            
+            const size = Math.random() * 0.75;
+            star.style.left = x+'px';
+            star.style.top = y+'px';
+            star.style.width = 1+size+'px';
+            star.style.height = 1+size+'px';
+
+            const duration = Math.random() * 15;
+
+            star.style.animationDuration = 2+duration+'s';
+            star.style.animationDelay = duration+'s';
+
+            section.appendChild(star); 
+            i++;
+        }
+    } 
+    stars();
+    </script>
+</body>
+</html>

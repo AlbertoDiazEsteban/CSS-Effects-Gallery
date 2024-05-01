@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZigZag Background Animation</title>
+<style>
+    :root {
+        --bg: #92ECF1;     
+        --color: #D4F9FA;  
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--bg);
+        background-image: url('data:image/svg+xml;utf8,%3Csvg width%3D%221106%22 height%3D%221008%22 viewBox%3D%220 0 1106 1008%22 fill%3D%22none%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg clip-path%3D%22url(%23clip0_332_297)%22%3E%3Cpath d%3D%22M553 503L0 0V504L553 1008L1106 504V0L553 503Z%22 fill%3D%22%23D4F9FA%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3CclipPath id%3D%22clip0_332_297%22%3E%3Crect width%3D%221106%22 height%3D%221008%22 fill%3D%22white%22%2F%3E%3C%2FclipPath%3E%3C%2Fdefs%3E%3C%2Fsvg%3E');
+        background-size: auto 10vh;
+        background-position: right;
+        background-repeat: repeat;
+        animation: moveBackgroundVertical 3s linear infinite;
+    }
+
+    @keyframes moveBackgroundVertical {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 0% -10vh; }
+    }
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+
+</style>
+</head>
+<body>
+ 
+</body>
+</html>

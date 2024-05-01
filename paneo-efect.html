@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effect Test</title>
+<style>
+    body {
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-color: rgb(53, 53, 53);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    #panel svg {
+        width: 350px;
+        border-radius: 20px;
+        transition: 0.5s;
+    }
+    #panel:hover > svg {
+        filter: drop-shadow(0px 0px 50px rgba(0, 0, 0, 0.5));
+    } 
+    iframe {
+        width: 350px;
+        height: 300px;
+        border: 3px solid greenyellow;
+        position: absolute;
+    }
+
+
+</style>
+</head>
+<body>
+    <div id="panel">
+        <svg width="1191" height="867" viewBox="0 0 1191 867" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.0382 79.7148L7.21104 79.7148C3.22851 79.7148 1.41118e-07 82.9433 3.152e-07 86.9258L2.69197e-06 141.3C2.86605e-06 145.282 3.22851 148.511 7.21105 148.511L15.0382 148.511C19.0207 148.511 22.2493 145.282 22.2493 141.3L22.2493 86.9258C22.2493 82.9433 19.0207 79.7148 15.0382 79.7148Z" fill="#9E9E9E"/>
+            <path d="M86.5596 7.21087L86.5596 15.038C86.5596 19.0205 89.7881 22.249 93.7706 22.249L148.145 22.249C152.127 22.249 155.356 19.0205 155.356 15.038L155.356 7.21086C155.356 3.22833 152.127 -0.000180249 148.145 -0.000180075L93.7706 -0.000177699C89.7881 -0.000177525 86.5596 3.22833 86.5596 7.21087Z" fill="#9E9E9E"/>
+            <path d="M166.497 7.21087L166.497 15.038C166.497 19.0205 169.726 22.249 173.708 22.249L228.082 22.249C232.065 22.249 235.293 19.0205 235.293 15.038L235.293 7.21086C235.293 3.22833 232.065 -0.000180249 228.082 -0.000180075L173.708 -0.000177699C169.726 -0.000177525 166.497 3.22833 166.497 7.21087Z" fill="#9E9E9E"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M76 11.7148C40.1015 11.7148 11 40.8163 11 76.7149V789.715C11 825.613 40.1015 854.715 76 854.715H1115C1150.9 854.715 1180 825.613 1180 789.715V76.7148C1180 40.8163 1150.9 11.7148 1115 11.7148H76ZM59.1148 784.047L59.1147 82.1719C59.1147 70.7185 68.4175 61.4336 79.8931 61.4336L1106.03 61.4336C1117.51 61.4336 1126.81 70.7184 1126.81 82.1719V784.047C1126.81 795.501 1117.51 804.786 1106.03 804.786L79.8931 804.786C68.4175 804.786 59.1148 795.501 59.1148 784.047Z" fill="#C7C6C6"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5801 786.253L16.5801 79.9666C16.5801 45.0337 44.9536 16.7149 79.954 16.7149L1110.63 16.7148C1145.63 16.7148 1174 45.0336 1174 79.9666V786.253C1174 821.186 1145.63 849.505 1110.63 849.505L79.9541 849.505C44.9536 849.505 16.5801 821.186 16.5801 786.253ZM59.1146 784.047L59.1146 82.1719C59.1146 70.7184 68.4173 61.4336 79.8929 61.4336L1106.03 61.4335C1117.51 61.4335 1126.81 70.7184 1126.81 82.1718V784.047C1126.81 795.501 1117.51 804.786 1106.03 804.786L79.8929 804.786C68.4174 804.786 59.1146 795.501 59.1146 784.047Z" fill="#262626"/>
+            <path d="M48.7171 433.074C48.7171 427.353 44.0794 422.715 38.3585 422.715C32.6376 422.715 28 427.353 28 433.074C28 438.794 32.6376 443.432 38.3585 443.432C44.0794 443.432 48.7171 438.794 48.7171 433.074Z" fill="black"/>
+            <rect x="59" y="61" width="1068" height="744" rx="22" fill="#000"/>
+            </svg>            
+    </div>
+    <script>
+        const panel = document.getElementById('panel');
+        const heightPanel = panel.clientHeight;
+        const widthPanel = panel.clientWidth;
+
+        panel.addEventListener('mousemove', (evt) => {
+            const {layerX, layerY} = evt;
+            
+            const yRotation = 20 * (layerX - widthPanel / 2) / widthPanel;
+            const xRotation = -20 * (layerY - heightPanel / 2) / heightPanel;
+
+            const string = `
+                perspective(500px)
+                scale(1.1)
+                rotateX(${xRotation}deg)
+                rotateY(${yRotation}deg)
+            `;
+
+            panel.style.transform = string.trim(); // trim para evitar problemas con saltos de línea
+        });
+
+        panel.addEventListener('mouseout', () => {
+            panel.style.transform = `
+                perspective(500px)
+                scale(1)
+                rotateX(0deg)
+                rotateY(0deg)
+            `;
+        });
+    </script>
+</body>
+</html>
